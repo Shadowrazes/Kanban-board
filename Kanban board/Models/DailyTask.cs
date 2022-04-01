@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Avalonia.Media.Imaging;
+using Avalonia;
+using Avalonia.Platform;
+using System.Reflection;
+using System.IO;
 
 namespace Kanban_board.Models
 {
@@ -16,12 +20,18 @@ namespace Kanban_board.Models
         Bitmap image;
         public event PropertyChangedEventHandler PropertyChanged;
         public DailyTask(string _status, string _name = "Поиграть в доту", string _description = "Пикнуть techies или pudge",
-            string _imagePath = @"goodnesss.jpg")
+            string _imagePath = @"Assets\goodnesss.jpg")
         {
             name = _name;
             description = _description;
             ImagePath = _imagePath;
             Status = _status;
+            if (_imagePath == @"Assets\goodnesss.jpg")
+            {
+                string directoryPath = Directory.GetCurrentDirectory();
+                directoryPath = directoryPath.Remove(directoryPath.LastIndexOf("bin"));
+                _imagePath = directoryPath + _imagePath;
+            }
             image = new Bitmap(_imagePath);
         }
 
