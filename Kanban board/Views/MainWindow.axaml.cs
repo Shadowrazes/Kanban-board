@@ -3,6 +3,7 @@ using Avalonia.Interactivity;
 using System.Collections.ObjectModel;
 using Kanban_board.Models;
 using Kanban_board.ViewModels;
+using Avalonia.Media.Imaging;
 
 namespace Kanban_board.Views
 {
@@ -75,6 +76,7 @@ namespace Kanban_board.Views
             if (filePath != null)
             {
                 task.ImagePath = filePath[0];
+                task.Image = new Bitmap(filePath[0]);
             }
         }
 

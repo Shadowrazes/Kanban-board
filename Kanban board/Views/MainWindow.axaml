@@ -3,8 +3,6 @@
         xmlns:vm="using:Kanban_board.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:model="using:Kanban_board.Models"
-		xmlns:ext="clr-namespace:Kanban_board.Models;assembly=Kanban_board.Models"
         mc:Ignorable="d" d:DesignWidth="1600" d:DesignHeight="1000"
         x:Class="Kanban_board.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -15,10 +13,6 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-	<Window.Resources>
-		<model:BitmapAssetValueConverter x:Key="variableImage"/>
-	</Window.Resources>
 
 	<Window.Styles>
 		<StyleInclude Source="/Styles/Style.axaml"/>
@@ -64,7 +58,7 @@
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Name}" Grid.Column="0" Grid.Row="1"/>
 								<TextBlock Classes="gridTextBlock ListItem" Text="Описание" Grid.Column="0" Grid.Row="2"/>
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Description}" Grid.Column="0" Grid.Row="3"/>
-								<Image Classes="gridImage ListItem" Source="{Binding ImagePath, Converter={StaticResource variableImage}}" Grid.Column="0" Grid.Row="4"/>
+								<Image Classes="gridImage ListItem" Source="{Binding Image}" Grid.Column="0" Grid.Row="4"/>
 								<Button Classes="gridBtn ListItem" Click="AddImage" Content="Добавить изображение" Grid.Column="0" Grid.Row="5"/>
 								<Button Classes="gridBtn ListItem" Click="DeleteTask" Content="Удалить" Grid.Column="0" Grid.Row="6"/>
 							</Grid>
@@ -95,7 +89,7 @@
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Name}" Grid.Column="0" Grid.Row="1"/>
 								<TextBlock Classes="gridTextBlock ListItem" Text="Описание" Grid.Column="0" Grid.Row="2"/>
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Description}" Grid.Column="0" Grid.Row="3"/>
-								<Image Classes="gridImage ListItem" Source="{Binding ImagePath, Converter={StaticResource variableImage}}" Grid.Column="0" Grid.Row="4"/>
+								<Image Classes="gridImage ListItem" Source="{Binding Image}" Grid.Column="0" Grid.Row="4"/>
 								<Button Classes="gridBtn ListItem" Click="AddImage" Content="Добавить изображение" Grid.Column="0" Grid.Row="5"/>
 								<Button Classes="gridBtn ListItem" Click="DeleteTask" Content="Удалить" Grid.Column="0" Grid.Row="6"/>
 							</Grid>
@@ -126,7 +120,7 @@
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Name}" Grid.Column="0" Grid.Row="1"/>
 								<TextBlock Classes="gridTextBlock ListItem" Text="Описание" Grid.Column="0" Grid.Row="2"/>
 								<TextBox Classes="gridTextBox ListItem" Text="{Binding Description}" Grid.Column="0" Grid.Row="3"/>
-								<Image Classes="gridImage ListItem" Source="{Binding ImagePath, Converter={StaticResource variableImage}}" Grid.Column="0" Grid.Row="4"/>
+								<Image Classes="gridImage ListItem" Source="{Binding Image}" Grid.Column="0" Grid.Row="4"/>
 								<Button Classes="gridBtn ListItem" Click="AddImage" Content="Добавить изображение" Grid.Column="0" Grid.Row="5"/>
 								<Button Classes="gridBtn ListItem" Click="DeleteTask" Content="Удалить" Grid.Column="0" Grid.Row="6"/>
 							</Grid>
@@ -142,7 +136,4 @@
 			<Button Classes="gridBtn" Command="{Binding AddTask}" CommandParameter="Ended" Content="Добавить" Grid.Column="2"/>
 		</Grid>
 	</Grid>
-
-
-
 </Window>

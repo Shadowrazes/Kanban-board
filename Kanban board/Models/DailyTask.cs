@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Avalonia.Media.Imaging;
 
 namespace Kanban_board.Models
 {
@@ -12,15 +13,16 @@ namespace Kanban_board.Models
     {
         string name;
         string description;
-        string imagePath;
+        Bitmap image;
         public event PropertyChangedEventHandler PropertyChanged;
         public DailyTask(string _status, string _name = "Поиграть в доту", string _description = "Пикнуть techies или pudge",
-            string _imagePath = @"/Assets/goodness.jpg")
+            string _imagePath = @"goodnesss.jpg")
         {
             name = _name;
             description = _description;
-            imagePath = _imagePath;
+            ImagePath = _imagePath;
             Status = _status;
+            image = new Bitmap(_imagePath);
         }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -29,6 +31,7 @@ namespace Kanban_board.Models
         }
 
         public string Status { get; set; }
+        public string ImagePath { get; set; }
         public string Name 
         { 
             get => name;
@@ -49,12 +52,12 @@ namespace Kanban_board.Models
             }
         }
 
-        public string ImagePath
+        public Bitmap Image
         {
-            get => imagePath;
+            get => image;
             set
             {
-                imagePath = value;
+                image = value;
                 NotifyPropertyChanged();
             }
         }
